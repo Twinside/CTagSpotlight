@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<schema version="1.0" xmlns="http://www.apple.com/metadata"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://www.apple.com/metadata file:///System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Resources/MetadataSchema.xsd">
+    <attributes>
+        <attribute name="com_ctags_functions" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_classes" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_macros" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_methods" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_constructors" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_types" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_modules" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_globals" multivalued="true" type="CFString"/>
+    </attributes>
+
+    <types>
+        <type name="public.c-source"> 
+            <allattrs> 
+                com_ctags_functions com_ctags_macros com_ctags_globals com_ctags_types
+            </allattrs>
+            <displayattrs>
+                com_ctags_functions com_ctags_types
+            </displayattrs>
+        </type>
+        <!--Some c headers are in fact C++ or Objective C headers   -->
+        <!--so we must stuff it                                     -->
+        <type name="public.c-header"> 
+            <allattrs> 
+                com_ctags_functions com_ctags_macros com_ctags_globals com_ctags_types
+            </allattrs>
+            <displayattrs>
+                com_ctags_functions com_ctags_types
+            </displayattrs>
+        </type>
+        <type name="public.objective-c-source"> 
+            <allattrs> 
+            </allattrs>
+            <displayattrs>
+            </displayattrs>
+        </type>
+        <type name="public.c-plus-plus-source">
+            <allattrs> 
+            </allattrs>
+            <displayattrs>
+            </displayattrs>
+        </type>
+        <type name="public.c-plus-plus-header">
+            <allattrs> 
+            </allattrs>
+            <displayattrs>
+            </displayattrs>
+        </type>
+        <type name="com.sun.java-source">
+            <allattrs> 
+            </allattrs>
+            <displayattrs>
+            </displayattrs>
+        </type>
+        <type name="com.netscape.javascript-source">
+            <allattrs> 
+            </allattrs>
+            <displayattrs>
+            </displayattrs>
+        </type>
+        <type name="public.shell-script">
+            <allattrs> 
+            </allattrs>
+            <displayattrs>
+            </displayattrs>
+        </type>
+        <type name="public.perl-script">
+            <allattrs> 
+            </allattrs>
+            <displayattrs>
+            </displayattrs>
+        </type>
+        <type name="public.python-script">
+            <allattrs> 
+            </allattrs>
+            <displayattrs>
+            </displayattrs>
+        </type>
+        <type name="public.ruby-script">
+            <allattrs> 
+            </allattrs>
+            <displayattrs>
+            </displayattrs>
+        </type>
+        <type name="public.php-script">
+            <allattrs> 
+            </allattrs>
+            <displayattrs>
+            </displayattrs>
+        </type>
+    </types>
+</schema>
+

@@ -1,0 +1,9 @@
+  Option: --langmap=objectivec:.h.m
+    Setting ObjectiveC language map: .h (removed from C++) .m (removed from MatLab)
+Reading command line arguments
+OPENING Test/objectivec_interface.h as ObjectiveC language include file
+OPENING ../../SupaView/Definitions.h as ObjectiveC language include file
+OPENING ../../SupaView/LayoutTree/SVLayoutNode.h as ObjectiveC language include file
+OPENING ../../SupaView/LayoutTree/SVLayoutTree.m as ObjectiveC language file
+sorting tag file
+system ("sort -u -o testtags testtags")

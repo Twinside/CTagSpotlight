@@ -15,16 +15,92 @@
         <attribute name="com_ctags_structs" multivalued="true" type="CFString"/>
         <attribute name="com_ctags_constants" multivalued="true" type="CFString"/>
         <attribute name="com_ctags_enums" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_interfaces" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_property" multivalued="true" type="CFString"/>
     </attributes>
 
     <types>
         <type name="public.c-source"> 
             <allattrs> 
-                kMDItemTextContent kMDItemComment com_ctags_functions com_ctags_macros com_ctags_globals com_ctags_types
+                kMDItemTextContent kMDItemComment com_ctags_functions com_ctags_macros com_ctags_globals com_ctags_types com_ctags_structs 
             </allattrs>
             <displayattrs>
-                com_ctags_functions com_ctags_macros com_ctags_globals com_ctags_types
+                com_ctags_functions com_ctags_macros com_ctags_structs com_ctags_types
             </displayattrs>RubyImporter.mdimporter
+        </type>
+        <!--Some c headers are in fact C++ or Objective C headers   -->
+        <!--so we must stuff it                                     -->
+        <type name="public.c-header"> 
+            <allattrs> 
+                com_ctags_functions com_ctags_macros com_ctags_globals com_ctags_types
+            </allattrs>
+            <displayattrs>
+                com_ctags_functions com_ctags_types
+            </displayattrs>
+        </type>
+        <type name="public.c-plus-plus-source">
+            <allattrs> 
+                kMDItemTextContent kMDItemComment com_ctags_functions com_ctags_macros com_ctags_globals com_ctags_types com_ctags_classes com_ctags_structs 
+            </allattrs>
+            <displayattrs>
+                com_ctags_functions com_ctags_macros com_ctags_structs com_ctags_types com_ctags_classes
+            </displayattrs>
+        </type>
+        <type name="public.c-plus-plus-header">
+            <allattrs> 
+                kMDItemTextContent kMDItemComment com_ctags_functions com_ctags_macros com_ctags_globals com_ctags_types com_ctags_classes com_ctags_structs 
+            </allattrs>
+            <displayattrs>
+                com_ctags_functions com_ctags_macros com_ctags_structs com_ctags_types com_ctags_classes
+            </displayattrs>
+        </type>
+        <type name="com.sun.java-source">
+            <allattrs> 
+                com_ctags_classes com_ctags_methods com_ctags_modules com_ctags_interfaces com_ctags_enums
+            </allattrs>
+            <displayattrs>
+                com_ctags_classes com_ctags_modules com_ctags_interfaces
+            </displayattrs>
+        </type>
+        <type name="com.netscape.javascript-source">
+            <allattrs> 
+                com_ctags_functions com_ctags_methods com_ctags_classes com_ctags_property com_ctags_globals
+            </allattrs>
+            <displayattrs>
+                com_ctags_functions com_ctags_methods com_ctags_classes
+            </displayattrs>
+        </type>
+        <type name="public.perl-script">
+            <allattrs> 
+                com_ctags_constants com_ctags_functions com_ctags_modules
+            </allattrs>
+            <displayattrs>
+                com_ctags_constants com_ctags_functions com_ctags_modules
+            </displayattrs>
+        </type>
+        <type name="public.python-script">
+            <allattrs> 
+                com_ctags_classes com_ctags_functions com_ctags_methods com_ctags_modules com_ctags_globals
+            </allattrs>
+            <displayattrs>
+                com_ctags_classes com_ctags_functions com_ctags_methods com_ctags_modules 
+            </displayattrs>
+        </type>
+        <type name="public.ruby-script">
+            <allattrs> 
+                com_ctags_classes com_ctags_modules com_ctags_methods
+            </allattrs>
+            <displayattrs>
+                com_ctags_classes com_ctags_modules com_ctags_methods
+            </displayattrs>
+        </type>
+        <type name="public.php-script">
+            <allattrs> 
+                com_ctags_functions com_ctags_interfaces com_ctags_classes com_ctags_constants
+            </allattrs>
+            <displayattrs>
+                com_ctags_functions com_ctags_interfaces com_ctags_classes com_ctags_constants
+            </displayattrs>
         </type>
     </types>
 </schema>

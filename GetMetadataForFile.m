@@ -22,6 +22,8 @@ typedef enum KindIndex_t
     kindStructures,
     kindConstants,
     kindEnums,
+    kindInterfaces,
+    kindProperties,
 
     // must be the last one
     kindUNVALID
@@ -39,6 +41,8 @@ char*   kindPublicNames[] =
     , "com_ctags_structures"
     , "com_ctags_constants"
     , "com_ctags_enums" 
+    , "com_ctags_interfaces"
+    , "com_ctags_property"
     };
 
 void allocateKinds()
@@ -49,6 +53,10 @@ void cleanupAllocatedKinds()
 {
 }
 
+///////////////////////////////////////////////////
+//// Define the mapping between CTag kind letter
+////and the type showed in spotlight.
+///////////////////////////////////////////////////
 typedef struct TupleKind_t
 {
     char c;
@@ -66,6 +74,59 @@ TupleKind   cKindTable[] =
 	, { 'e', kindConstants }
 	, { 'f', kindFunctions }
 	, { 'g', kindEnums }
+    };
+
+TupleKind   pythonKindTable[] =
+    { { 'c', kindClasses }
+    , { 'f', kindFunctions }
+    , { 'm', kindMethods }
+    , { 'v', kindGlobals }
+    , { 'i', kindModules }
+    };
+
+TupleKind rubyKindTable[] =
+    { { 'c', kindClasses }
+    , { 'f', kindMethods }
+    , { 'm', kindModules }
+    };
+
+TupleKind   csharpKindTable[] =
+    { { 'c', kindClasses }
+    , { 'g', kindEnums }
+    , { 's', kindStructures }
+    , { 't', kindTypes }
+    , { 'n', kindModules }
+    , { 'i', kindInterfaces }
+    , { 'p', kindProperties }
+    };
+
+TupleKind javaKindTable[] =
+    { { 'c', kindClasses }
+    , { 'e', kindEnums }
+    , { 'm', kindMethods }
+    , { 'p', kindModules }
+    , { 'i', kindInterfaces }
+    };
+
+TupleKind phpKindTable[] =
+    { { 'c', kindClasses }
+    , { 'i', kindInterfaces }
+    , { 'd', kindConstants }
+    , { 'f', kindFunctions }
+    };
+
+TupleKind javascriptKindTable[] =
+    { { 'f', kindFunctions }
+    , { 'c', kindClasses }
+    , { 'm', kindMethods }
+    , { 'p', kindProperties }
+    , { 'v', kindGlobals }
+    };
+
+TupleKind perlKindTable[] =
+    { { 'c', kindConstants }
+    , { 'p', kindModules }
+    , { 's', kindFunctions }
     };
 
 void fillTable( const TupleKind def[]
@@ -102,8 +163,8 @@ AssocKindFiller assocBuilders[] =
     , NULL_LANG // BasicParser
     , NULL_LANG // BetaParser
     , LANGTABLE(cKindTable) // CParser
-    , NULL_LANG // CppParser
-    , NULL_LANG // CsharpParser
+    , LANGTABLE(cKindTable) // CppParser
+    , LANGTABLE(csharpKindTable) // CsharpParser
     , NULL_LANG // CobolParser
     , NULL_LANG // DosBatchParser
     , NULL_LANG // EiffelParser
@@ -111,8 +172,8 @@ AssocKindFiller assocBuilders[] =
     , NULL_LANG // FlexParser
     , NULL_LANG // FortranParser
     , NULL_LANG // HtmlParser
-    , NULL_LANG // JavaParser
-    , NULL_LANG // JavaScriptParser
+    , LANGTABLE(javaKindTable)// JavaParser
+    , LANGTABLE(javascriptKindTable)// JavaScriptParser
     , NULL_LANG // LispParser
     , NULL_LANG // LuaParser
     , NULL_LANG // MakefileParser
@@ -120,11 +181,11 @@ AssocKindFiller assocBuilders[] =
     , NULL_LANG // ObjcParser 
     , NULL_LANG // OcamlParser
     , NULL_LANG // PascalParser
-    , NULL_LANG // PerlParser
-    , NULL_LANG // PhpParser
-    , NULL_LANG // PythonParser
+    , LANGTABLE(perlKindTable)// PerlParser
+    , LANGTABLE(phpKindTable)// PhpParser
+    , LANGTABLE(pythonKindTable) // PythonParser
     , NULL_LANG // RexxParser
-    , NULL_LANG // RubyParser
+    , LANGTABLE(rubyKindTable) // RubyParser
     , NULL_LANG // SchemeParser
     , NULL_LANG // ShParser
     , NULL_LANG // SlangParser

@@ -19,3 +19,6 @@ clean:
 installed:
 	mdimport -L 2>&1 | grep Ctag
 
+validateschema:
+	mdcheckschema schema.xml
+

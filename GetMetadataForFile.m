@@ -1,10 +1,13 @@
 #include <stdio.h>
-#include <CoreFoundation/CoreFoundation.h>
-#include <CoreServices/CoreServices.h> 
+#import <CoreFoundation/CoreFoundation.h>
+#import <CoreServices/CoreServices.h> 
+#import <Foundation/Foundation.h>
 #include "ctagSource/entry.h"
 #include "ctagSource/parse.h"
 #include "ctagSource/options.h"
 #include "ctagSource/routines.h"
+#include "ctagSource/keyword.h"
+#include "ctagSource/read.h"
 
 typedef enum KindIndex_t
 {
@@ -140,32 +143,18 @@ typedef struct MetaDataContext_t
 {
     CFMutableArrayRef       kindLists[ kindUNVALID ];
     KindIndex               kindTable[ sizeof(char) * 8 ];
-    FILE*       logging;
 } MetaDataContext;
 
 MetaDataContext ctxt;
-
-void LogInit( MetaDataContext  *ctxt )
-{
-    ctxt->logging = fopen("/Users/vince/Desktop/log.debug.txt", "w");
-}
-
-void LogStr( MetaDataContext  *ctxt, const char* str )
-{
-    fprintf( ctxt->logging, "%s", str );
-    fflush( ctxt->logging );
-}
-
-void LogEnd( MetaDataContext *ctxt )
-{
-    fclose( ctxt->logging );
-    ctxt->logging = NULL;
-}
 
 Boolean prepareContext( const char* filePath
                       , MetaDataContext *ctxt )
 {
     int languageIndex = getFileLanguage (filePath);
+
+    if (languageIndex < 0)
+        return FALSE;
+
     // prepare the association table used for the file
     // language.
     AssocKindFiller filler =
@@ -178,12 +167,13 @@ Boolean prepareContext( const char* filePath
              , filler.assocElemCount
              , ctxt->kindTable );
 
+    // the callback is used to ensure that CFObject
+    // are retained in the object
     for (int i = 0; i < kindUNVALID; ++i)
         ctxt->kindLists[ i ] =
-            CFArrayCreateMutable( NULL, 5, NULL );
+            CFArrayCreateMutable( NULL, 0
+                                , &kCFTypeArrayCallBacks );
         
-    LogInit( ctxt );
-    
     return TRUE;
 }
 
@@ -191,7 +181,6 @@ void cleanupContext( MetaDataContext *ctxt )
 {
     for (int i = 0; i < kindUNVALID; ++i)
         CFRelease(ctxt->kindLists[ i ]);
-    LogEnd( ctxt );
 }
 
 void dumpContextInAttributes
@@ -200,32 +189,19 @@ void dumpContextInAttributes
 { 
     for (int i = 0; i < kindUNVALID; ++i)
     {
+        if ( CFArrayGetCount( ctxt->kindLists[i] ) == 0 )
+            continue;
+
         CFStringRef key =
             CFStringCreateWithCString( NULL
-                                     , kindPublicNames[ i ]
+                                     , kindPublicNames[i]
                                      , kCFStringEncodingUTF8 );
         CFDictionaryAddValue( attributes
                             , key
-                            , ctxt->kindLists[ i ]
+                            , ctxt->kindLists[i]
                             );
         CFRelease( key );
     }
-}
-
-void initCTags( char* filepath )
-{
-	cookedArgs *args;
-    char *argv[] = { filepath, NULL };
-    setExecutableName( "CTagSpotlight" );
-
-	args = cArgNewFromArgv (argv);
-	checkRegex ();
-
-	initializeParsing ();
-	initOptions ();
-	readOptionConfiguration ();
-	parseOptions (args);
-	checkOptions ();
 }
 
 Boolean GetMetadataForURL
@@ -237,7 +213,6 @@ Boolean GetMetadataForURL
     const int FILEPATH_BUFFERSIZE = 1024;
     char    filePath[ FILEPATH_BUFFERSIZE ];
 
-
     CFStringRef ref = 
         CFURLCopyFileSystemPath( urlForFile
                                , kCFURLPOSIXPathStyle );
@@ -247,15 +222,48 @@ Boolean GetMetadataForURL
                       , kCFStringEncodingUTF8 ); 
 
     CFRelease( ref );
-    initCTags( filePath );
+
+    ////////////////////////////////////////////
+    //// CTags initialization
+    ////////////////////////////////////////////
+	cookedArgs *args;
+    char *argv[] = { filePath, NULL };
+    setExecutableName( "CTagSpotlight" );
+
+	args = cArgNewFromArgv (argv);
+	checkRegex ();
+
+	initializeParsing ();
+	initOptions ();
+	readOptionConfiguration ();
+	parseOptions (args);
+	checkOptions ();
+
+    // My init
     prepareContext( filePath, &ctxt );
 
-    // delete parser definition.
-
+    ////////////////////////////////////////////
+    //// Real work
+    ////////////////////////////////////////////
     parseFile( filePath );
     dumpContextInAttributes( &ctxt, attributes );
 
+    ////////////////////////////////////////////
+    //// Cleanup
+    ////////////////////////////////////////////
+    // CTags
+	cArgDelete (args);
+	freeKeywordTable ();
+	freeRoutineResources ();
+	freeSourceFileResources ();
+	freeTagFileResources ();
+	freeOptionResources ();
+	freeParserResources ();
+	freeRegexResources ();
+
+    // Me
     cleanupContext( &ctxt );
+
     return TRUE;
 }
 

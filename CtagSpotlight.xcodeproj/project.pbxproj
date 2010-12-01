@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C05A19C06CAA52B00D84F6F /* GetMetadataForFile.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C05A19B06CAA52B00D84F6F /* GetMetadataForFile.c */; };
 		615952EC12A54C9F00B06C97 /* ant.c in Sources */ = {isa = PBXBuildFile; fileRef = 615952A212A54C9F00B06C97 /* ant.c */; };
 		615952EE12A54C9F00B06C97 /* args.c in Sources */ = {isa = PBXBuildFile; fileRef = 615952A412A54C9F00B06C97 /* args.c */; };
 		615952EF12A54C9F00B06C97 /* args.h in Headers */ = {isa = PBXBuildFile; fileRef = 615952A512A54C9F00B06C97 /* args.h */; };
@@ -78,6 +77,9 @@
 		6159533312A54C9F00B06C97 /* vstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 615952E912A54C9F00B06C97 /* vstring.c */; };
 		6159533412A54C9F00B06C97 /* vstring.h in Headers */ = {isa = PBXBuildFile; fileRef = 615952EA12A54C9F00B06C97 /* vstring.h */; };
 		6159533512A54C9F00B06C97 /* yacc.c in Sources */ = {isa = PBXBuildFile; fileRef = 615952EB12A54C9F00B06C97 /* yacc.c */; };
+		6159589612A6751500B06C97 /* GetMetadataForFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6159589512A6751500B06C97 /* GetMetadataForFile.m */; };
+		6167ABDB12A69B700070B571 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = C88FB7D7067446EC006EBB30 /* schema.xml */; };
+		6167ABDD12A69B7B0070B571 /* schema.strings in Resources */ = {isa = PBXBuildFile; fileRef = C88FB7E30674480E006EBB30 /* schema.strings */; };
 		8D576312048677EA00EA77CD /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB77B6FE84183AC02AAC07 /* main.c */; settings = {ATTRIBUTES = (); }; };
 		8D576314048677EA00EA77CD /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */; };
 		8D5B49A804867FD3000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B49A704867FD3000E48DA /* InfoPlist.strings */; };
@@ -88,7 +90,6 @@
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08FB77B6FE84183AC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
-		2C05A19B06CAA52B00D84F6F /* GetMetadataForFile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GetMetadataForFile.c; sourceTree = "<group>"; };
 		615952A212A54C9F00B06C97 /* ant.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ant.c; path = ctagSource/ant.c; sourceTree = "<group>"; };
 		615952A412A54C9F00B06C97 /* args.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = args.c; path = ctagSource/args.c; sourceTree = "<group>"; };
 		615952A512A54C9F00B06C97 /* args.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = args.h; path = ctagSource/args.h; sourceTree = "<group>"; };
@@ -159,6 +160,9 @@
 		615952E912A54C9F00B06C97 /* vstring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vstring.c; path = ctagSource/vstring.c; sourceTree = "<group>"; };
 		615952EA12A54C9F00B06C97 /* vstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vstring.h; path = ctagSource/vstring.h; sourceTree = "<group>"; };
 		615952EB12A54C9F00B06C97 /* yacc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yacc.c; path = ctagSource/yacc.c; sourceTree = "<group>"; };
+		6159589512A6751500B06C97 /* GetMetadataForFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMetadataForFile.m; sourceTree = "<group>"; };
+		6167ABE812A69C610070B571 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/schema.strings; sourceTree = "<group>"; };
+		6183D81512A6926C0093D7AD /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8D576316048677EA00EA77CD /* CtagSpotlight.mdimporter */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CtagSpotlight.mdimporter; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D576317048677EA00EA77CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C86B05260671AA6E00DD9006 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
@@ -213,8 +217,8 @@
 		08FB77AFFE84173DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				6159589512A6751500B06C97 /* GetMetadataForFile.m */,
 				6159529A12A54C4600B06C97 /* Ctag */,
-				2C05A19B06CAA52B00D84F6F /* GetMetadataForFile.c */,
 				08FB77B6FE84183AC02AAC07 /* main.c */,
 			);
 			name = Source;
@@ -386,6 +390,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5B49A804867FD3000E48DA /* InfoPlist.strings in Resources */,
+				6167ABDB12A69B700070B571 /* schema.xml in Resources */,
+				6167ABDD12A69B7B0070B571 /* schema.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +413,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D576312048677EA00EA77CD /* main.c in Sources */,
-				2C05A19C06CAA52B00D84F6F /* GetMetadataForFile.c in Sources */,
 				615952EC12A54C9F00B06C97 /* ant.c in Sources */,
 				615952EE12A54C9F00B06C97 /* args.c in Sources */,
 				615952F012A54C9F00B06C97 /* asm.c in Sources */,
@@ -460,6 +465,7 @@
 				6159533212A54C9F00B06C97 /* vim.c in Sources */,
 				6159533312A54C9F00B06C97 /* vstring.c in Sources */,
 				6159533512A54C9F00B06C97 /* yacc.c in Sources */,
+				6159589612A6751500B06C97 /* GetMetadataForFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +476,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				089C167EFE841241C02AAC07 /* English */,
+				6183D81512A6926C0093D7AD /* French */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -478,6 +485,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C88FB7DB0674470F006EBB30 /* English */,
+				6167ABE812A69C610070B571 /* French */,
 			);
 			name = schema.strings;
 			sourceTree = "<group>";

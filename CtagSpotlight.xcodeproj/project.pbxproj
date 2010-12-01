@@ -489,15 +489,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				GCC_DEBUGGING_SYMBOLS = full;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					SYSTEM_SEARCH_FILTER,
 					HAVE_CONFIG_H,
 				);
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = 4.2;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/Spotlight;
+				OTHER_CFLAGS = "-g";
 				PRODUCT_NAME = CtagSpotlight;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = mdimporter;
 			};
 			name = Debug;
@@ -510,10 +513,11 @@
 					SYSTEM_SEARCH_FILTER,
 					HAVE_CONFIG_H,
 				);
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = 4.2;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/Spotlight;
 				PRODUCT_NAME = CtagSpotlight;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = mdimporter;
 			};
 			name = Release;

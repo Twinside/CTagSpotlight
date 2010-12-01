@@ -660,6 +660,7 @@ extern boolean parseFile (const char *const fileName)
 		verbose ("ignoring %s (language disabled)\n", fileName);
 	else
 	{
+#ifndef SYSTEM_SEARCH_FILTER
 		if (Option.filter)
 			openTagFile ();
 
@@ -670,6 +671,11 @@ extern boolean parseFile (const char *const fileName)
 		addTotals (1, 0L, 0L);
 
 		return tagFileResized;
+#else  /* SYSTEM_SEARCH_FILTER */
+        createTagsForFile (fileName, language, 0);
+        return TRUE;
+#endif /* SYSTEM_SEARCH_FILTER */
+
 	}
 	return tagFileResized;
 }

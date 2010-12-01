@@ -12,6 +12,9 @@
         <attribute name="com_ctags_types" multivalued="true" type="CFString"/>
         <attribute name="com_ctags_modules" multivalued="true" type="CFString"/>
         <attribute name="com_ctags_globals" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_structs" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_constants" multivalued="true" type="CFString"/>
+        <attribute name="com_ctags_enums" multivalued="true" type="CFString"/>
     </attributes>
 
     <types>

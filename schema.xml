@@ -24,7 +24,7 @@
             </allattrs>
             <displayattrs>
                 com_ctags_functions com_ctags_macros com_ctags_globals com_ctags_types
-            </displayattrs>
+            </displayattrs>RubyImporter.mdimporter
         </type>
     </types>
 </schema>

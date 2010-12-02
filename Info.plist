@@ -21,6 +21,8 @@
 				<string>public.python-script</string>
 				<string>public.ruby-script</string>
 				<string>public.php-script</string>
+				<string>public.shell-script</string>
+				<string>public.objective-c-source</string>
 			</array>
 		</dict>
 	</array>
@@ -72,6 +74,23 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>c</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.source-code</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Python source</string>
+			<key>UTTypeIdentifier</key>
+			<string>public.python-script</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>py</string>
 				</array>
 			</dict>
 		</dict>

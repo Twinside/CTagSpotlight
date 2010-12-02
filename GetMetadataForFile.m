@@ -45,12 +45,39 @@ char*   kindPublicNames[] =
     , "com_ctags_property"
     };
 
-void allocateKinds()
+typedef struct LangAssoc_t
 {
-}
+    char *utiName;
+    char *langForceFlag;
+} LangAssoc;
 
-void cleanupAllocatedKinds()
+LangAssoc utiTranslation[] =
+    { { "public.c-source", "--language-force=C" }
+    , { "public.c-header", "--language-force=C" }
+    , { "public.c-plus-plus-source", "--language-force=C++" }
+    , { "public.c-plus-plus-header", "--language-force=C++" }
+    , { "com.sun.java-source", "--language-force=Java" }
+    , { "com.netscape.javascript-source", "--language-force=JavaScript" }
+    , { "public.perl-script", "--language-force=Perl" }
+    , { "public.python-script", "--language-force=Python" }
+    , { "public.ruby-script", "--language-force=Ruby" }
+    , { "public.php-script", "--language-force=PHP" }
+    , { "public.shell-script", "--language-force=Sh" }
+    , { "public.objective-c-source", "--language-force=ObjectiveC" }
+    };
+
+char* findCTagLanguage( const char* const uti )
 {
+    int translationCount =
+        sizeof( utiTranslation ) / sizeof( LangAssoc );
+
+    for ( int i = 0; i < translationCount; i++ )
+    {
+        if ( strcmp( uti, utiTranslation[ i ].utiName ) == 0 )
+            return utiTranslation[ i ].langForceFlag;
+    }
+
+    return NULL;
 }
 
 ///////////////////////////////////////////////////
@@ -62,7 +89,6 @@ typedef struct TupleKind_t
     char c;
     KindIndex index;
 } TupleKind;
-
 
 TupleKind   cKindTable[] =
     { { 'c', kindClasses }
@@ -76,6 +102,17 @@ TupleKind   cKindTable[] =
 	, { 'g', kindEnums }
     };
 
+TupleKind   objcKindTable[] =
+    { { 'i', kindInterfaces }
+    , { 'm', kindMethods }
+    , { 'f', kindFunctions }
+    , { 'e', kindEnums }
+    , { 'M', kindMacros }
+    , { 'p', kindProperties }
+    , { 's', kindStructures }
+    , { 'v', kindGlobals }
+    , { 'c', kindMethods }
+    };
 TupleKind   pythonKindTable[] =
     { { 'c', kindClasses }
     , { 'f', kindFunctions }
@@ -114,6 +151,9 @@ TupleKind phpKindTable[] =
     , { 'd', kindConstants }
     , { 'f', kindFunctions }
     };
+
+TupleKind shKindTable[] =
+    { { 'f', kindFunctions } };
 
 TupleKind javascriptKindTable[] =
     { { 'f', kindFunctions }
@@ -178,7 +218,7 @@ AssocKindFiller assocBuilders[] =
     , NULL_LANG // LuaParser
     , NULL_LANG // MakefileParser
     , NULL_LANG // MatLabParser
-    , NULL_LANG // ObjcParser 
+    , LANGTABLE(objcKindTable) // ObjcParser 
     , NULL_LANG // OcamlParser
     , NULL_LANG // PascalParser
     , LANGTABLE(perlKindTable)// PerlParser
@@ -187,7 +227,7 @@ AssocKindFiller assocBuilders[] =
     , NULL_LANG // RexxParser
     , LANGTABLE(rubyKindTable) // RubyParser
     , NULL_LANG // SchemeParser
-    , NULL_LANG // ShParser
+    , LANGTABLE(shKindTable) // ShParser
     , NULL_LANG // SlangParser
     , NULL_LANG // SmlParser
     , NULL_LANG // SqlParser
@@ -272,7 +312,9 @@ Boolean GetMetadataForURL
         , CFURLRef urlForFile )
 {
     const int FILEPATH_BUFFERSIZE = 1024;
+    const int UTI_BUFFERSIZE = 128;
     char    filePath[ FILEPATH_BUFFERSIZE ];
+    char    utiBuffer[ UTI_BUFFERSIZE ];
 
     CFStringRef ref = 
         CFURLCopyFileSystemPath( urlForFile
@@ -284,11 +326,31 @@ Boolean GetMetadataForURL
 
     CFRelease( ref );
 
+    
+    ////////////////////////////////////////////
+    //// Spotlight can give us precise file
+    //// format information, so we force
+    //// CTags language acordingly.
+    ////////////////////////////////////////////
+    char *argv[] = { NULL, NULL, NULL };
+
+    CFStringGetCString( contentTypeUTI
+                      , utiBuffer
+                      , UTI_BUFFERSIZE
+                      , kCFStringEncodingUTF8 );
+
+    char *mayFlag = findCTagLanguage( utiBuffer );
+    if ( mayFlag != NULL )
+    {
+        argv[0] = mayFlag;
+        argv[1] = filePath;
+    }
+    else argv[0] = filePath;
+
     ////////////////////////////////////////////
     //// CTags initialization
     ////////////////////////////////////////////
 	cookedArgs *args;
-    char *argv[] = { filePath, NULL };
     setExecutableName( "CTagSpotlight" );
 
 	args = cArgNewFromArgv (argv);

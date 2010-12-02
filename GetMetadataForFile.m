@@ -64,6 +64,21 @@ LangAssoc utiTranslation[] =
     , { "public.php-script", "--language-force=PHP" }
     , { "public.shell-script", "--language-force=Sh" }
     , { "public.objective-c-source", "--language-force=ObjectiveC" }
+    , { "public.csharp-source", "--language-sorce=C#" }
+//public.lua-script Lua
+//public.csh-script Sh
+//public.pascal-source Pascal
+//public.scheme-source Scheme
+//public.erlang-source Erlang
+//public.ocaml-source OCaml
+//public.sml-source SML
+//public.tcl-script Tcl
+//public.verilog-source Verilog
+//public.vhdl-source VHDL
+//public.eiffel-source Eiffel
+//public.lisp-source Lisp
+//public.fortran-source Fotran
+//public.assembly-source Asm
     };
 
 char* findCTagLanguage( const char* const uti )

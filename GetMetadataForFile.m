@@ -316,6 +316,8 @@ Boolean GetMetadataForURL
     char    filePath[ FILEPATH_BUFFERSIZE ];
     char    utiBuffer[ UTI_BUFFERSIZE ];
 
+    assert( sizeof(kindPublicNames) / sizeof(char*) == kindUNVALID );
+
     CFStringRef ref = 
         CFURLCopyFileSystemPath( urlForFile
                                , kCFURLPOSIXPathStyle );

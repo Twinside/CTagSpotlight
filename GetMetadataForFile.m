@@ -1,6 +1,6 @@
 #include <stdio.h>
 #import <CoreFoundation/CoreFoundation.h>
-#import <CoreServices/CoreServices.h> 
+#import <CoreServices/CoreServices.h>
 #import <Foundation/Foundation.h>
 #include "ctagSource/entry.h"
 #include "ctagSource/parse.h"
@@ -40,7 +40,7 @@ char*   kindPublicNames[] =
     , "com_ctags_globals"
     , "com_ctags_structures"
     , "com_ctags_constants"
-    , "com_ctags_enums" 
+    , "com_ctags_enums"
     , "com_ctags_interfaces"
     , "com_ctags_property"
     };
@@ -73,12 +73,12 @@ LangAssoc utiTranslation[] =
     , { "public.ocaml-source", "--language-force=OCaml" }
     , { "public.sml-source", "--language-force=SML" }
     , { "public.tcl-script", "--language-force=Tcl" }
-    //, { "public.verilog-source", "--language-force=Verilog" }
-    //, { "public.vhdl-source", "--language-force=VHDL" }
-    //, { "public.eiffel-source", "--language-force=Eiffel" }
-    //, { "public.lisp-source", "--language-force=Lisp" }
-    //, { "public.fortran-source", "--language-force=Fotran" }
-    //, { "public.assembly-source", "--language-force=Asm" }
+    , { "public.verilog-source", "--language-force=Verilog" }
+    , { "public.vhdl-source", "--language-force=VHDL" }
+    , { "public.eiffel-source", "--language-force=Eiffel" }
+    , { "public.lisp-source", "--language-force=Lisp" }
+    , { "public.fortran-source", "--language-force=Fotran" }
+    , { "public.assembly-source", "--language-force=Asm" }
     };
 
 char* findCTagLanguage( const char* const uti )
@@ -136,6 +136,12 @@ TupleKind   pythonKindTable[] =
     , { 'i', kindModules }
     };
 
+// TODO : find what is an eiffel feature.
+TupleKind eiffelKindTable[] =
+    { { 'c', kindClasses }
+    // , { 'f', kindMethods }
+    };
+
 TupleKind rubyKindTable[] =
     { { 'c', kindClasses }
     , { 'f', kindMethods }
@@ -176,6 +182,9 @@ TupleKind luaKindTable[] =
 TupleKind pascalKindTable[] =
     { { 'f', kindFunctions } };
 
+TupleKind lispKindTable[] =
+    { { 'f', kindFunctions } };
+
 TupleKind schemeKindTable[] =
     { { 'f', kindFunctions }
     , { 's', kindGlobals }
@@ -208,6 +217,23 @@ TupleKind erlangKindTable[] =
     , { 'r', kindStructures }
     };
 
+TupleKind fortranKindTable[] =
+    { { 'f', kindFunctions }
+    , { 'i', kindInterfaces }
+    , { 'm', kindModules }
+    , { 's', kindFunctions }
+    , { 'v', kindGlobals }
+    , { 't', kindTypes }
+    , { 'k', kindProperties }
+    };
+
+TupleKind asmKindTable[] =
+    { { 'm', kindMacros }
+    , { 't', kindTypes }
+    , { 'l', kindFunctions } //not really true
+    , { 'd', kindGlobals }
+    };
+
 TupleKind ocamlKindTable[] =
     { { 'c', kindClasses }
     , { 'M', kindModules }
@@ -218,12 +244,33 @@ TupleKind ocamlKindTable[] =
     , { 'v', kindGlobals }
     };
 
-TupleKind smlKindTable[]
+TupleKind smlKindTable[] =
     { { 'f', kindFunctions }
     , { 'r', kindStructures }
     , { 't', kindTypes }
     , { 'v', kindGlobals }
     , { 'c', kindModules }
+    };
+
+// incomplete, I can't really understand
+// the semantics of verilog :s (and VHDL..
+TupleKind verilogKindTable[] =
+    { { 'c', kindConstants }
+    , { 'f', kindFunctions }
+    , { 'm', kindModules }
+    , { 'r', kindTypes }
+    , { 'n', kindTypes }
+    };
+
+TupleKind vhdlKindTable[] =
+    { { 'c', kindConstants }
+    , { 'f', kindFunctions }
+    , { 'p', kindFunctions }
+    , { 'P', kindModules }
+    , { 'd', kindInterfaces }
+    , { 't', kindTypes }
+    , { 'T', kindTypes }
+    , { 'r', kindTypes }
     };
 
 void fillTable( const TupleKind def[]
@@ -254,7 +301,7 @@ typedef struct AssocKindFiller_t
 
 AssocKindFiller assocBuilders[] =
     { NULL_LANG // AntParser
-    , NULL_LANG // AsmParser
+    , LANGTABLE(asmKindTable)// AsmParser
     , NULL_LANG // AspParser
     , NULL_LANG // AwkParser
     , NULL_LANG // BasicParser
@@ -264,18 +311,18 @@ AssocKindFiller assocBuilders[] =
     , LANGTABLE(csharpKindTable) // CsharpParser
     , NULL_LANG // CobolParser
     , NULL_LANG // DosBatchParser
-    , NULL_LANG // EiffelParser
+    , LANGTABLE(eiffelKindTable)// EiffelParser
     , LANGTABLE(erlangKindTable)// ErlangParser
     , NULL_LANG // FlexParser
-    , NULL_LANG // FortranParser
+    , LANGTABLE(fortranKindTable)// FortranParser
     , NULL_LANG // HtmlParser
     , LANGTABLE(javaKindTable)// JavaParser
     , LANGTABLE(javascriptKindTable)// JavaScriptParser
-    , NULL_LANG // LispParser
+    , LANGTABLE(lispKindTable)// LispParser
     , LANGTABLE(luaKindTable)// LuaParser
     , NULL_LANG // MakefileParser
     , NULL_LANG // MatLabParser
-    , LANGTABLE(objcKindTable) // ObjcParser 
+    , LANGTABLE(objcKindTable) // ObjcParser
     , LANGTABLE(ocamlKindTable)// OcamlParser
     , LANGTABLE(pascalKindTable)// PascalParser
     , LANGTABLE(perlKindTable)// PerlParser
@@ -291,8 +338,8 @@ AssocKindFiller assocBuilders[] =
     , LANGTABLE(tclKindTable)// TclParser
     , NULL_LANG // TexParser
     , NULL_LANG // VeraParser
-    , NULL_LANG // VerilogParser
-    , NULL_LANG // VhdlParser
+    , LANGTABLE(verilogKindTable)// VerilogParser
+    , LANGTABLE(vhdlKindTable)// VhdlParser
     , NULL_LANG // VimParser
     , NULL_LANG // YaccParser
     };
@@ -331,7 +378,7 @@ Boolean prepareContext( const char* filePath
         ctxt->kindLists[ i ] =
             CFArrayCreateMutable( NULL, 0
                                 , &kCFTypeArrayCallBacks );
-        
+
     return TRUE;
 }
 
@@ -344,7 +391,7 @@ void cleanupContext( MetaDataContext *ctxt )
 void dumpContextInAttributes
              ( const MetaDataContext  *ctxt
 			 , CFMutableDictionaryRef attributes )
-{ 
+{
     for (int i = 0; i < kindUNVALID; ++i)
     {
         if ( CFArrayGetCount( ctxt->kindLists[i] ) == 0 )
@@ -375,17 +422,17 @@ Boolean GetMetadataForURL
 
     assert( sizeof(kindPublicNames) / sizeof(char*) == kindUNVALID );
 
-    CFStringRef ref = 
+    CFStringRef ref =
         CFURLCopyFileSystemPath( urlForFile
                                , kCFURLPOSIXPathStyle );
     CFStringGetCString( ref
                       , filePath
                       , FILEPATH_BUFFERSIZE
-                      , kCFStringEncodingUTF8 ); 
+                      , kCFStringEncodingUTF8 );
 
     CFRelease( ref );
 
-    
+
     ////////////////////////////////////////////
     //// Spotlight can give us precise file
     //// format information, so we force

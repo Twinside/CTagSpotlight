@@ -333,7 +333,7 @@ AssocKindFiller assocBuilders[] =
     , LANGTABLE(schemeKindTable) // SchemeParser
     , LANGTABLE(shKindTable) // ShParser
     , NULL_LANG // SlangParser
-    , NULL_LANG // SmlParser
+    , LANGTABLE(smlKindTable) // SmlParser
     , NULL_LANG // SqlParser
     , LANGTABLE(tclKindTable)// TclParser
     , NULL_LANG // TexParser

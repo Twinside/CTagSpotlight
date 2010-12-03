@@ -23,23 +23,21 @@
 				<string>public.php-script</string>
 				<string>public.shell-script</string>
 				<string>public.objective-c-source</string>
-                <string>public.csh-script</string>
-                <string>public.assembly-source</string>
-                
-                <!-- Created UTI's -->
-                <string>public.csharp-source</string>
-                <string>public.lua-script</string>
-                <string>public.pascal-source</string>
-                <string>public.scheme-source</string>
-                <string>public.erlang-source</string>
-                <string>public.ocaml-source</string>
-                <string>public.sml-source</string>
-                <string>public.tcl-script</string>
-                <string>public.verilog-source</string>
-                <string>public.vhdl-source</string>
-                <string>public.eiffel-source</string>
-                <string>public.lisp-source</string>
-                <string>public.fortran-source</string>
+				<string>public.csh-script</string>
+				<string>public.assembly-source</string>
+				<string>public.csharp-source</string>
+				<string>public.lua-script</string>
+				<string>public.pascal-source</string>
+				<string>public.scheme-source</string>
+				<string>public.erlang-source</string>
+				<string>public.ocaml-source</string>
+				<string>public.sml-source</string>
+				<string>public.tcl-script</string>
+				<string>public.verilog-source</string>
+				<string>public.vhdl-source</string>
+				<string>public.eiffel-source</string>
+				<string>public.lisp-source</string>
+				<string>public.fortran-source</string>
 			</array>
 		</dict>
 	</array>
@@ -77,7 +75,6 @@
 	<string></string>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
-        <!-- Soruce code -->
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
@@ -95,7 +92,7 @@
 				</array>
 			</dict>
 		</dict>
-        <dict>
+		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
@@ -109,11 +106,11 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>p</string>
-					<string>ppas</string>
+					<string>pas</string>
 				</array>
 			</dict>
-        </dict>
-        <dict>
+		</dict>
+		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
@@ -132,8 +129,8 @@
 					<string>sm</string>
 				</array>
 			</dict>
-        </dict>
-        <dict>
+		</dict>
+		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
@@ -150,8 +147,8 @@
 					<string>hrl</string>
 				</array>
 			</dict>
-        </dict>
-        <dict>
+		</dict>
+		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
@@ -168,8 +165,8 @@
 					<string>mli</string>
 				</array>
 			</dict>
-        </dict>
-        <dict>
+		</dict>
+		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
@@ -186,8 +183,8 @@
 					<string>sig</string>
 				</array>
 			</dict>
-        </dict>
-        <dict>
+		</dict>
+		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
@@ -203,8 +200,8 @@
 					<string>v</string>
 				</array>
 			</dict>
-        </dict>
-        <dict>
+		</dict>
+		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
@@ -221,8 +218,8 @@
 					<string>vhd</string>
 				</array>
 			</dict>
-        </dict>
-        <dict>
+		</dict>
+		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
@@ -238,8 +235,8 @@
 					<string>e</string>
 				</array>
 			</dict>
-        </dict>
-        <dict>
+		</dict>
+		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
@@ -260,8 +257,8 @@
 					<string>lsp</string>
 				</array>
 			</dict>
-        </dict>
-        <dict>
+		</dict>
+		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
@@ -282,8 +279,7 @@
 					<string>f95</string>
 				</array>
 			</dict>
-        </dict>
-        <!-- Scripts -->
+		</dict>
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>

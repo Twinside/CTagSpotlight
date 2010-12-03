@@ -11,14 +11,14 @@ what kind of element you went to be in the search.
 
 Installation
 ------------
-To installe the mdimporter, you just have to drop it in
+To install the mdimporter, you just have to drop it in
 the `/Library/spotlight` folder.
 
 TODO : add directive to update code files tags
 
 Supported attributes
 --------------------
-When searching in spotlight, you can add the following critera to
+When searching in spotlight, you can add the following criteria to
 narrow your search :
 
  * Source code Functions
@@ -34,14 +34,14 @@ narrow your search :
  * Source code Enum
 
 To be able to use it, you must start a spotlight search, click
-on the (+) button to add a search critera, and find them in
+on the (+) button to add a search criteria, and find them in
 the "Other" categories (they are not in the list directly).
 
 Supported languages
 -------------------
-Right now the following languages are supported, more languages
-will come as I complete the binding.
+The mdimport support the following system defined language :
 
+ * Assembler
  * C
  * C++
  * Java
@@ -53,7 +53,30 @@ will come as I complete the binding.
  * Ruby
  * Sh
 
+Additionally, the module support the following languages :
+
+ * C#
+ * Eiffel
+ * Erlang
+ * Fortran
+ * Lisp
+ * Lua
+ * OCaml
+ * Pascal
+ * SML
+ * Scheme
+ * TCL
+ * VHDL
+ * Verilog
+
 Build
 -----
 Open the xcode project, build, done.
+
+Licence
+-------
+The same as [Exuberant CTags](http://ctags.sourceforge.net/) so it's
+[GPL](http://www.gnu.org/copyleft/gpl.html) I guess. CTagSpotlight
+integrate a tweaked version of CTags up to version 5.8 with patches
+from the SVN repository.
 

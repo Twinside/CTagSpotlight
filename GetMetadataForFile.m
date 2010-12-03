@@ -64,21 +64,21 @@ LangAssoc utiTranslation[] =
     , { "public.php-script", "--language-force=PHP" }
     , { "public.shell-script", "--language-force=Sh" }
     , { "public.objective-c-source", "--language-force=ObjectiveC" }
-    , { "public.csharp-source", "--language-sorce=C#" }
-//public.lua-script Lua
-//public.csh-script Sh
-//public.pascal-source Pascal
-//public.scheme-source Scheme
-//public.erlang-source Erlang
-//public.ocaml-source OCaml
-//public.sml-source SML
-//public.tcl-script Tcl
-//public.verilog-source Verilog
-//public.vhdl-source VHDL
-//public.eiffel-source Eiffel
-//public.lisp-source Lisp
-//public.fortran-source Fotran
-//public.assembly-source Asm
+    , { "public.csharp-source", "--language-force=C#" }
+    , { "public.lua-script", "--language-force=Lua" }
+    , { "public.csh-script", "--language-force=Sh" }
+    , { "public.pascal-source", "--language-force=Pascal" }
+    , { "public.scheme-source", "--language-force=Scheme" }
+    , { "public.erlang-source", "--language-force=Erlang" }
+    , { "public.ocaml-source", "--language-force=OCaml" }
+    , { "public.sml-source", "--language-force=SML" }
+    , { "public.tcl-script", "--language-force=Tcl" }
+    //, { "public.verilog-source", "--language-force=Verilog" }
+    //, { "public.vhdl-source", "--language-force=VHDL" }
+    //, { "public.eiffel-source", "--language-force=Eiffel" }
+    //, { "public.lisp-source", "--language-force=Lisp" }
+    //, { "public.fortran-source", "--language-force=Fotran" }
+    //, { "public.assembly-source", "--language-force=Asm" }
     };
 
 char* findCTagLanguage( const char* const uti )
@@ -170,6 +170,17 @@ TupleKind phpKindTable[] =
 TupleKind shKindTable[] =
     { { 'f', kindFunctions } };
 
+TupleKind luaKindTable[] =
+    { { 'f', kindFunctions } };
+
+TupleKind pascalKindTable[] =
+    { { 'f', kindFunctions } };
+
+TupleKind schemeKindTable[] =
+    { { 'f', kindFunctions }
+    , { 's', kindGlobals }
+    };
+
 TupleKind javascriptKindTable[] =
     { { 'f', kindFunctions }
     , { 'c', kindClasses }
@@ -182,6 +193,37 @@ TupleKind perlKindTable[] =
     { { 'c', kindConstants }
     , { 'p', kindModules }
     , { 's', kindFunctions }
+    };
+
+TupleKind tclKindTable[] =
+    { { 'c', kindClasses }
+    , { 'm', kindMethods }
+    , { 'p', kindFunctions }
+    };
+
+TupleKind erlangKindTable[] =
+    { { 'd', kindMacros }
+    , { 'm', kindModules }
+    , { 'f', kindFunctions }
+    , { 'r', kindStructures }
+    };
+
+TupleKind ocamlKindTable[] =
+    { { 'c', kindClasses }
+    , { 'M', kindModules }
+    , { 'm', kindMethods }
+    , { 't', kindTypes }
+    , { 'C', kindConstructors }
+    , { 'f', kindFunctions }
+    , { 'v', kindGlobals }
+    };
+
+TupleKind smlKindTable[]
+    { { 'f', kindFunctions }
+    , { 'r', kindStructures }
+    , { 't', kindTypes }
+    , { 'v', kindGlobals }
+    , { 'c', kindModules }
     };
 
 void fillTable( const TupleKind def[]
@@ -223,30 +265,30 @@ AssocKindFiller assocBuilders[] =
     , NULL_LANG // CobolParser
     , NULL_LANG // DosBatchParser
     , NULL_LANG // EiffelParser
-    , NULL_LANG // ErlangParser
+    , LANGTABLE(erlangKindTable)// ErlangParser
     , NULL_LANG // FlexParser
     , NULL_LANG // FortranParser
     , NULL_LANG // HtmlParser
     , LANGTABLE(javaKindTable)// JavaParser
     , LANGTABLE(javascriptKindTable)// JavaScriptParser
     , NULL_LANG // LispParser
-    , NULL_LANG // LuaParser
+    , LANGTABLE(luaKindTable)// LuaParser
     , NULL_LANG // MakefileParser
     , NULL_LANG // MatLabParser
     , LANGTABLE(objcKindTable) // ObjcParser 
-    , NULL_LANG // OcamlParser
-    , NULL_LANG // PascalParser
+    , LANGTABLE(ocamlKindTable)// OcamlParser
+    , LANGTABLE(pascalKindTable)// PascalParser
     , LANGTABLE(perlKindTable)// PerlParser
     , LANGTABLE(phpKindTable)// PhpParser
     , LANGTABLE(pythonKindTable) // PythonParser
     , NULL_LANG // RexxParser
     , LANGTABLE(rubyKindTable) // RubyParser
-    , NULL_LANG // SchemeParser
+    , LANGTABLE(schemeKindTable) // SchemeParser
     , LANGTABLE(shKindTable) // ShParser
     , NULL_LANG // SlangParser
     , NULL_LANG // SmlParser
     , NULL_LANG // SqlParser
-    , NULL_LANG // TclParser
+    , LANGTABLE(tclKindTable)// TclParser
     , NULL_LANG // TexParser
     , NULL_LANG // VeraParser
     , NULL_LANG // VerilogParser

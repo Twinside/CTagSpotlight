@@ -527,10 +527,16 @@ extern void notifySystemTagEntry (const tagEntryInfo *const tag)
         CFStringCreateWithCString( NULL, tag->name
                                  , kCFStringEncodingUTF8 );
 
-    CFArrayAppendValue( ctxt.kindLists[ bucketIndex ]
-                      , tagName
-                      );
+    // some problem may arise due to bad encoding, some source
+    // codes can use weird names. If conversion fail, just ignore
+    // it.
+    if (tagName != nil)
+    {
+        CFArrayAppendValue( ctxt.kindLists[ bucketIndex ]
+                          , tagName
+                          );
 
-    CFRelease( tagName );
+        CFRelease( tagName );
+    }
 }
 

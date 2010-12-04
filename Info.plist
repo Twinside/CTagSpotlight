@@ -38,6 +38,12 @@
 				<string>public.eiffel-source</string>
 				<string>public.lisp-source</string>
 				<string>public.fortran-source</string>
+
+                <!--ha ha ha :(-->
+                <string>com.apple.dashcode.javascript</string>
+                <string>public.public.fortran-90-source</string>
+                <string>public.public.fortran-95-source</string>
+                <string>public.fortran-95-source</string>
 			</array>
 		</dict>
 	</array>
@@ -73,7 +79,7 @@
 	</dict>
 	<key>CFPlugInUnloadFunction</key>
 	<string></string>
-	<key>UTImportedTypeDeclarations</key>
+	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
 			<key>UTTypeConformsTo</key>

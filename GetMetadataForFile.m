@@ -51,6 +51,15 @@ typedef struct LangAssoc_t
     char *langForceFlag;
 } LangAssoc;
 
+// non importé :
+// C# :(
+// org.vim.cs-file
+// verilog
+// VHDL :(
+// Erlang : org.vim.erl-file
+// OCaml
+// LUA
+// org.vim.tcl-file
 LangAssoc utiTranslation[] =
     { { "public.c-source", "--language-force=C" }
     , { "public.c-header", "--language-force=C" }
@@ -58,6 +67,7 @@ LangAssoc utiTranslation[] =
     , { "public.c-plus-plus-header", "--language-force=C++" }
     , { "com.sun.java-source", "--language-force=Java" }
     , { "com.netscape.javascript-source", "--language-force=JavaScript" }
+    , { "com.apple.dashcode.javascript", "--language-force=JavaScript" }
     , { "public.perl-script", "--language-force=Perl" }
     , { "public.python-script", "--language-force=Python" }
     , { "public.ruby-script", "--language-force=Ruby" }
@@ -67,18 +77,26 @@ LangAssoc utiTranslation[] =
     , { "public.csharp-source", "--language-force=C#" }
     , { "public.lua-script", "--language-force=Lua" }
     , { "public.csh-script", "--language-force=Sh" }
+    , { "public.ksh-script", "--language-force=Sh" }
     , { "public.pascal-source", "--language-force=Pascal" }
     , { "public.scheme-source", "--language-force=Scheme" }
     , { "public.erlang-source", "--language-force=Erlang" }
     , { "public.ocaml-source", "--language-force=OCaml" }
-    , { "public.sml-source", "--language-force=SML" }
     , { "public.tcl-script", "--language-force=Tcl" }
     , { "public.verilog-source", "--language-force=Verilog" }
     , { "public.vhdl-source", "--language-force=VHDL" }
     , { "public.eiffel-source", "--language-force=Eiffel" }
     , { "public.lisp-source", "--language-force=Lisp" }
-    , { "public.fortran-source", "--language-force=Fotran" }
     , { "public.assembly-source", "--language-force=Asm" }
+    , { "public.fortran-source", "--language-force=Fortran" }
+    , { "public.public.fortran-90-source", "--language-force=Fortran" }
+    , { "public.public.fortran-95-source", "--language-force=Fortran" }
+
+    // ok for a reason I don't really understand, some SML
+    // files are used as real (with UTI & everything)
+    , { "public.sml-source", "--language-force=SML" }
+    , { "com.real.smil", "--language-force=SML" }
+
     };
 
 char* findCTagLanguage( const char* const uti )

@@ -37,6 +37,23 @@ To be able to use it, you must start a spotlight search, click
 on the (+) button to add a search criteria, and find them in
 the "Other" categories (they are not in the list directly).
 
+For french user you must search the following tags :
+
+ * Fonction de code
+ * Classe de code
+ * Macro de code
+ * Méthode de classe
+ * Contructeur de donnée
+ * Type de donnée
+ * Module de code
+ * Variable Globale
+ * Structure de donnée
+ * Constante
+ * Enumération
+
+They may change in the future, as I find them not particularly
+fitting.
+
 Supported languages
 -------------------
 The mdimport support the following system defined language :

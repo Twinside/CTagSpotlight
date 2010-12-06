@@ -10,6 +10,10 @@ run:
 	mdimport -L 2> /dev/null
 
 install:
+	cp -R build/Release/CtagSpotlight.mdimporter /Library/Spotlight/
+	mdimport -L 2> /dev/null
+
+installdebug:
 	cp -R build/Debug/CtagSpotlight.mdimporter /Library/Spotlight/
 	mdimport -L 2> /dev/null
 
@@ -26,4 +30,10 @@ installed:
 
 validateschema:
 	mdcheckschema schema.xml
+
+showregistered:
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -dump
+
+rebuilddatabase:
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain system -domain user
 

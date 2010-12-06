@@ -52,14 +52,10 @@ typedef struct LangAssoc_t
 } LangAssoc;
 
 // non importé :
-// C# :(
-// org.vim.cs-file
 // verilog
 // VHDL :(
-// Erlang : org.vim.erl-file
 // OCaml
 // LUA
-// org.vim.tcl-file
 LangAssoc utiTranslation[] =
     { { "public.c-source", "--language-force=C" }
     , { "public.c-header", "--language-force=C" }
@@ -75,28 +71,33 @@ LangAssoc utiTranslation[] =
     , { "public.shell-script", "--language-force=Sh" }
     , { "public.objective-c-source", "--language-force=ObjectiveC" }
     , { "public.csharp-source", "--language-force=C#" }
+    , { "org.vim.cs-file", "--language-force=C#" }
     , { "public.lua-script", "--language-force=Lua" }
     , { "public.csh-script", "--language-force=Sh" }
     , { "public.ksh-script", "--language-force=Sh" }
     , { "public.pascal-source", "--language-force=Pascal" }
+    , { "com.apple.xcode.pascal-source", "--language-force=Pascal" }
     , { "public.scheme-source", "--language-force=Scheme" }
     , { "public.erlang-source", "--language-force=Erlang" }
+    , { "org.vim.erl-file", "--language-force=Erlang" }
     , { "public.ocaml-source", "--language-force=OCaml" }
     , { "public.tcl-script", "--language-force=Tcl" }
+    , { "org.vim.tcl-file", "--language-force=Tcl" }
     , { "public.verilog-source", "--language-force=Verilog" }
     , { "public.vhdl-source", "--language-force=VHDL" }
     , { "public.eiffel-source", "--language-force=Eiffel" }
     , { "public.lisp-source", "--language-force=Lisp" }
+    , { "org.vim.lisp-file", "--language-force=Lisp" }
     , { "public.assembly-source", "--language-force=Asm" }
     , { "public.fortran-source", "--language-force=Fortran" }
     , { "public.public.fortran-90-source", "--language-force=Fortran" }
     , { "public.public.fortran-95-source", "--language-force=Fortran" }
+    , { "com.apple.xcode.fortran-source", "--language-force=Fortran" }
 
     // ok for a reason I don't really understand, some SML
     // files are used as real (with UTI & everything)
     , { "public.sml-source", "--language-force=SML" }
     , { "com.real.smil", "--language-force=SML" }
-
     };
 
 char* findCTagLanguage( const char* const uti )

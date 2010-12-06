@@ -44,7 +44,16 @@
                 <string>public.public.fortran-90-source</string>
                 <string>public.public.fortran-95-source</string>
                 <string>public.fortran-95-source</string>
-			</array>
+                <string>com.apple.xcode.fortran-source</string>
+                <string>com.apple.xcode.pascal-source</string>
+
+                <!-- Because MacVim wreck my balls -->
+                <string>org.vim.cs-file</string>
+                <string>org.vim.erl-file</string>
+                <string>org.vim.hs-file</string>
+                <string>org.vim.lisp-file</string>
+                <string>org.vim.tcl-file</string>
+            </array>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>

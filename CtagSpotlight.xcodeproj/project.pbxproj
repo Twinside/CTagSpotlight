@@ -521,11 +521,12 @@
 					SYSTEM_SEARCH_FILTER,
 					HAVE_CONFIG_H,
 				);
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/Spotlight;
 				PRODUCT_NAME = CtagSpotlight;
 				RUN_CLANG_STATIC_ANALYZER = NO;
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = mdimporter;
 			};
 			name = Release;
@@ -548,6 +549,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				SDKROOT = macosx10.6;

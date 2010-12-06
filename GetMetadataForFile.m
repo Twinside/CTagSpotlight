@@ -49,6 +49,7 @@ typedef struct LangAssoc_t
 {
     char *utiName;
     char *langForceFlag;
+    int  langId;
 } LangAssoc;
 
 // non importé :
@@ -57,61 +58,75 @@ typedef struct LangAssoc_t
 // OCaml
 // LUA
 LangAssoc utiTranslation[] =
-    { { "public.c-source", "--language-force=C" }
-    , { "public.c-header", "--language-force=C" }
-    , { "public.c-plus-plus-source", "--language-force=C++" }
-    , { "public.c-plus-plus-header", "--language-force=C++" }
-    , { "com.sun.java-source", "--language-force=Java" }
-    , { "com.netscape.javascript-source", "--language-force=JavaScript" }
-    , { "com.apple.dashcode.javascript", "--language-force=JavaScript" }
-    , { "public.perl-script", "--language-force=Perl" }
-    , { "public.python-script", "--language-force=Python" }
-    , { "public.ruby-script", "--language-force=Ruby" }
-    , { "public.php-script", "--language-force=PHP" }
-    , { "public.shell-script", "--language-force=Sh" }
-    , { "public.objective-c-source", "--language-force=ObjectiveC" }
-    , { "public.csharp-source", "--language-force=C#" }
-    , { "org.vim.cs-file", "--language-force=C#" }
-    , { "public.lua-script", "--language-force=Lua" }
-    , { "public.csh-script", "--language-force=Sh" }
-    , { "public.ksh-script", "--language-force=Sh" }
-    , { "public.pascal-source", "--language-force=Pascal" }
-    , { "com.apple.xcode.pascal-source", "--language-force=Pascal" }
-    , { "public.scheme-source", "--language-force=Scheme" }
-    , { "public.erlang-source", "--language-force=Erlang" }
-    , { "org.vim.erl-file", "--language-force=Erlang" }
-    , { "public.ocaml-source", "--language-force=OCaml" }
-    , { "public.tcl-script", "--language-force=Tcl" }
-    , { "org.vim.tcl-file", "--language-force=Tcl" }
-    , { "public.verilog-source", "--language-force=Verilog" }
-    , { "public.vhdl-source", "--language-force=VHDL" }
-    , { "public.eiffel-source", "--language-force=Eiffel" }
-    , { "public.lisp-source", "--language-force=Lisp" }
-    , { "org.vim.lisp-file", "--language-force=Lisp" }
-    , { "public.assembly-source", "--language-force=Asm" }
-    , { "public.fortran-source", "--language-force=Fortran" }
-    , { "public.public.fortran-90-source", "--language-force=Fortran" }
-    , { "public.public.fortran-95-source", "--language-force=Fortran" }
-    , { "com.apple.xcode.fortran-source", "--language-force=Fortran" }
+    { { "public.c-source", "--language-force=C", 6 }
+    , { "public.c-header", "--language-force=C", 6 }
+    , { "public.c-plus-plus-source", "--language-force=C++", 6 }
+    , { "public.c-plus-plus-header", "--language-force=C++", 6 }
+    , { "com.sun.java-source", "--language-force=Java", 16 }
+    , { "com.netscape.javascript-source", "--language-force=JavaScript", 17 }
+    , { "com.apple.dashcode.javascript", "--language-force=JavaScript", 17 }
+    , { "public.perl-script", "--language-force=Perl", 25 }
+    , { "public.python-script", "--language-force=Python", 27 }
+    , { "public.ruby-script", "--language-force=Ruby", 29 }
+    , { "public.php-script", "--language-force=PHP", 26 }
+    , { "public.shell-script", "--language-force=Sh",31 }
+    , { "public.objective-c-source", "--language-force=ObjectiveC", 22 }
+    , { "public.csharp-source", "--language-force=C#", 8 }
+    , { "org.vim.cs-file", "--language-force=C#", 8 }
+    , { "public.lua-script", "--language-force=Lua", 19 }
+    , { "public.csh-script", "--language-force=Sh", 31 }
+    , { "public.ksh-script", "--language-force=Sh", 31 }
+    , { "public.pascal-source", "--language-force=Pascal", 24}
+    , { "com.apple.xcode.pascal-source", "--language-force=Pascal", 24 }
+    , { "public.scheme-source", "--language-force=Scheme", 30 }
+    , { "public.erlang-source", "--language-force=Erlang", 12 }
+    , { "org.vim.erl-file", "--language-force=Erlang", 12 }
+    , { "public.ocaml-source", "--language-force=OCaml", 23 }
+    , { "public.tcl-script", "--language-force=Tcl", 35 }
+    , { "org.vim.tcl-file", "--language-force=Tcl", 35 }
+    , { "public.verilog-source", "--language-force=Verilog", 28 }
+    , { "public.vhdl-source", "--language-force=VHDL", 19 }
+    , { "public.eiffel-source", "--language-force=Eiffel", 11 }
+    , { "public.lisp-source", "--language-force=Lisp", 18 }
+    , { "org.vim.lisp-file", "--language-force=Lisp", 18 }
+    , { "public.assembly-source", "--language-force=Asm", 1 }
+    , { "public.fortran-source", "--language-force=Fortran", 14 }
+    , { "public.public.fortran-90-source", "--language-force=Fortran", 14 }
+    , { "public.public.fortran-95-source", "--language-force=Fortran", 14 }
+    , { "public.fortran-95-source", "--language-force=Fortran", 14 }
+    , { "com.apple.xcode.fortran-source", "--language-force=Fortran", 14 }
 
     // ok for a reason I don't really understand, some SML
     // files are used as real (with UTI & everything)
-    , { "public.sml-source", "--language-force=SML" }
-    , { "com.real.smil", "--language-force=SML" }
+    , { "public.sml-source", "--language-force=SML", 33 }
+    , { "com.real.smil", "--language-force=SML", 33 }
     };
 
-char* findCTagLanguage( const char* const uti )
+typedef struct LangFind_t
 {
+    char *langName;
+    int  langId;
+} LangFind;
+
+LangFind findCTagLanguage( const char* const uti )
+{
+    LangFind ret = { NULL, -1 };
     int translationCount =
         sizeof( utiTranslation ) / sizeof( LangAssoc );
 
     for ( int i = 0; i < translationCount; i++ )
     {
         if ( strcmp( uti, utiTranslation[ i ].utiName ) == 0 )
-            return utiTranslation[ i ].langForceFlag;
+        {
+            ret.langName = 
+                utiTranslation[ i ].langForceFlag;
+            ret.langId =
+                utiTranslation[ i ].langId;
+            return ret;
+        }
     }
 
-    return NULL;
+    return ret;
 }
 
 ///////////////////////////////////////////////////
@@ -319,48 +334,48 @@ typedef struct AssocKindFiller_t
 #define NULL_LANG { NULL, 0 }
 
 AssocKindFiller assocBuilders[] =
-    { NULL_LANG // AntParser
-    , LANGTABLE(asmKindTable)// AsmParser
-    , NULL_LANG // AspParser
-    , NULL_LANG // AwkParser
-    , NULL_LANG // BasicParser
-    , NULL_LANG // BetaParser
-    , LANGTABLE(cKindTable) // CParser
-    , LANGTABLE(cKindTable) // CppParser
-    , LANGTABLE(csharpKindTable) // CsharpParser
-    , NULL_LANG // CobolParser
-    , NULL_LANG // DosBatchParser
-    , LANGTABLE(eiffelKindTable)// EiffelParser
-    , LANGTABLE(erlangKindTable)// ErlangParser
-    , NULL_LANG // FlexParser
-    , LANGTABLE(fortranKindTable)// FortranParser
-    , NULL_LANG // HtmlParser
-    , LANGTABLE(javaKindTable)// JavaParser
-    , LANGTABLE(javascriptKindTable)// JavaScriptParser
-    , LANGTABLE(lispKindTable)// LispParser
-    , LANGTABLE(luaKindTable)// LuaParser
-    , NULL_LANG // MakefileParser
-    , NULL_LANG // MatLabParser
-    , LANGTABLE(objcKindTable) // ObjcParser
-    , LANGTABLE(ocamlKindTable)// OcamlParser
-    , LANGTABLE(pascalKindTable)// PascalParser
-    , LANGTABLE(perlKindTable)// PerlParser
-    , LANGTABLE(phpKindTable)// PhpParser
-    , LANGTABLE(pythonKindTable) // PythonParser
-    , NULL_LANG // RexxParser
-    , LANGTABLE(rubyKindTable) // RubyParser
-    , LANGTABLE(schemeKindTable) // SchemeParser
-    , LANGTABLE(shKindTable) // ShParser
-    , NULL_LANG // SlangParser
-    , LANGTABLE(smlKindTable) // SmlParser
-    , NULL_LANG // SqlParser
-    , LANGTABLE(tclKindTable)// TclParser
-    , NULL_LANG // TexParser
-    , NULL_LANG // VeraParser
-    , LANGTABLE(verilogKindTable)// VerilogParser
-    , LANGTABLE(vhdlKindTable)// VhdlParser
-    , NULL_LANG // VimParser
-    , NULL_LANG // YaccParser
+    { NULL_LANG                      // 0 AntParser
+    , LANGTABLE(asmKindTable)        // 1 AsmParser
+    , NULL_LANG                      // 2 AspParser
+    , NULL_LANG                      // 3 AwkParser
+    , NULL_LANG                      // 4 BasicParser
+    , NULL_LANG                      // 5 BetaParser
+    , LANGTABLE(cKindTable)          // 6 CParser
+    , LANGTABLE(cKindTable)          // 7 CppParser
+    , LANGTABLE(csharpKindTable)     // 8 CsharpParser
+    , NULL_LANG                      // 9 CobolParser
+    , NULL_LANG                      // 10 DosBatchParser
+    , LANGTABLE(eiffelKindTable)     // 11 EiffelParser
+    , LANGTABLE(erlangKindTable)     // 12 ErlangParser
+    , NULL_LANG                      // 13 FlexParser
+    , LANGTABLE(fortranKindTable)    // 14 FortranParser
+    , NULL_LANG                      // 15 HtmlParser
+    , LANGTABLE(javaKindTable)       // 16 JavaParser
+    , LANGTABLE(javascriptKindTable) // 17 JavaScriptParser
+    , LANGTABLE(lispKindTable)       // 18 LispParser
+    , LANGTABLE(luaKindTable)        // 19 LuaParser
+    , NULL_LANG                      // 20 MakefileParser
+    , NULL_LANG                      // 21 MatLabParser
+    , LANGTABLE(objcKindTable)       // 22 ObjcParser
+    , LANGTABLE(ocamlKindTable)      // 23 OcamlParser
+    , LANGTABLE(pascalKindTable)     // 24 PascalParser
+    , LANGTABLE(perlKindTable)       // 25 PerlParser
+    , LANGTABLE(phpKindTable)        // 26 PhpParser
+    , LANGTABLE(pythonKindTable)     // 27 PythonParser
+    , NULL_LANG                      // 28 RexxParser
+    , LANGTABLE(rubyKindTable)       // 29 RubyParser
+    , LANGTABLE(schemeKindTable)     // 30 SchemeParser
+    , LANGTABLE(shKindTable)         // 31 ShParser
+    , NULL_LANG                      // 32 SlangParser
+    , LANGTABLE(smlKindTable)        // 33 SmlParser
+    , NULL_LANG                      // 34 SqlParser
+    , LANGTABLE(tclKindTable)        // 35 TclParser
+    , NULL_LANG                      // 36 TexParser
+    , NULL_LANG                      // 37 VeraParser
+    , LANGTABLE(verilogKindTable)    // 38 VerilogParser
+    , LANGTABLE(vhdlKindTable)       // 39 VhdlParser
+    , NULL_LANG                      // VimParser
+    , NULL_LANG                      // YaccParser
     };
 
 typedef struct MetaDataContext_t
@@ -372,9 +387,10 @@ typedef struct MetaDataContext_t
 MetaDataContext ctxt;
 
 Boolean prepareContext( const char* filePath
+                      , LangFind    lang
                       , MetaDataContext *ctxt )
 {
-    int languageIndex = getFileLanguage (filePath);
+    int languageIndex = lang.langId;
 
     if (languageIndex < 0)
         return FALSE;
@@ -407,10 +423,15 @@ void cleanupContext( MetaDataContext *ctxt )
         CFRelease(ctxt->kindLists[ i ]);
 }
 
-void dumpContextInAttributes
+/**
+ * return true if any data has been inserted.
+ */
+boolean dumpContextInAttributes
              ( const MetaDataContext  *ctxt
 			 , CFMutableDictionaryRef attributes )
 {
+    boolean hasInserted = NO;
+
     for (int i = 0; i < kindUNVALID; ++i)
     {
         if ( CFArrayGetCount( ctxt->kindLists[i] ) == 0 )
@@ -425,7 +446,9 @@ void dumpContextInAttributes
                             , ctxt->kindLists[i]
                             );
         CFRelease( key );
+        hasInserted = YES;
     }
+    return hasInserted;
 }
 
 Boolean GetMetadataForURL
@@ -464,10 +487,10 @@ Boolean GetMetadataForURL
                       , UTI_BUFFERSIZE
                       , kCFStringEncodingUTF8 );
 
-    char *mayFlag = findCTagLanguage( utiBuffer );
-    if ( mayFlag != NULL )
+    LangFind mayFlag = findCTagLanguage( utiBuffer );
+    if ( mayFlag.langName != NULL )
     {
-        argv[0] = mayFlag;
+        argv[0] = mayFlag.langName;
         argv[1] = filePath;
     }
     else argv[0] = filePath;
@@ -488,13 +511,14 @@ Boolean GetMetadataForURL
 	checkOptions ();
 
     // My init
-    prepareContext( filePath, &ctxt );
+    prepareContext( filePath, mayFlag, &ctxt );
 
     ////////////////////////////////////////////
     //// Real work
     ////////////////////////////////////////////
     parseFile( filePath );
-    dumpContextInAttributes( &ctxt, attributes );
+    boolean hasInserted =
+        dumpContextInAttributes( &ctxt, attributes );
 
     ////////////////////////////////////////////
     //// Cleanup
@@ -512,7 +536,7 @@ Boolean GetMetadataForURL
     // Me
     cleanupContext( &ctxt );
 
-    return TRUE;
+    return hasInserted;
 }
 
 extern void notifySystemTagEntry (const tagEntryInfo *const tag)

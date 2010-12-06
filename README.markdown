@@ -14,7 +14,8 @@ Installation
 To install the mdimporter, you just have to drop it in
 the `/Library/spotlight` folder.
 
-TODO : add directive to update code files tags
+You should rebuild your spotlight databse after that, but as there is apparently no
+generic solution, I let you Google it for your sytem.
 
 Supported attributes
 --------------------
@@ -69,20 +70,25 @@ The mdimport support the following system defined language :
  * Python
  * Ruby
  * Sh
+ * Fortran
 
-Additionally, the module support the following languages :
+Additionally, the module support the following languages, which only
+under weird conditions (for now it only works if MacVim is installed) :
 
  * C#
- * Eiffel
  * Erlang
- * Fortran
  * Lisp
+ * Pascal
+ * TCL
+
+The following file types are somehow supported, but I've never been able
+to get spotlight to index them. So maybe they will be indexed on your system :
+
+ * Eiffel
  * Lua
  * OCaml
- * Pascal
  * SML
  * Scheme
- * TCL
  * VHDL
  * Verilog
 

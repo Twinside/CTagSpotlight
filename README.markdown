@@ -72,8 +72,8 @@ The mdimport support the following system defined language :
  * Sh
  * Fortran
 
-Additionally, the module support the following languages, which only
-under weird conditions (for now it only works if MacVim is installed) :
+Additionally, the module support the following languages, which only work
+under weird conditions (it works only if MacVim is installed) :
 
  * C#
  * Erlang

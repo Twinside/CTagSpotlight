@@ -14,8 +14,8 @@ Installation
 To install the mdimporter, you just have to drop it in
 the `/Library/spotlight` folder.
 
-You should rebuild your spotlight databse after that, but as there is apparently no
-generic solution, I let you Google it for your sytem.
+After installing the plugin, you should reset your spotlight
+database with the following command `sudo mdutil -E /`
 
 Supported attributes
 --------------------

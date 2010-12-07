@@ -45,12 +45,13 @@ static hashEntry **HashTable = NULL;
 /*
 *   FUNCTION DEFINITIONS
 */
-
+// was previously in the function scope, but
+// due to the lifetime of ctag in an mdimporter,
+// it was breaking everything.
+static boolean hashTableIsAllocated = FALSE;
 static hashEntry **getHashTable (void)
 {
-	static boolean allocated = FALSE;
-
-	if (! allocated)
+	if (! hashTableIsAllocated )
 	{
 		unsigned int i;
 
@@ -59,7 +60,7 @@ static hashEntry **getHashTable (void)
 		for (i = 0  ;  i < TableSize  ;  ++i)
 			HashTable [i] = NULL;
 
-		allocated = TRUE;
+		hashTableIsAllocated = TRUE;
 	}
 	return HashTable;
 }
@@ -188,6 +189,9 @@ extern void freeKeywordTable (void)
 			}
 		}
 		eFree (HashTable);
+
+		// reset the crap
+        hashTableIsAllocated = FALSE;
 	}
 }
 

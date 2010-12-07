@@ -31,9 +31,13 @@ installed:
 validateschema:
 	mdcheckschema schema.xml
 
+LSREGISTERPATH:=/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/
+register:
+	sudo ${LSREGISTERPATH}lsregister -f /Library/Spotlight/CtagSpotlight.mdimporter
+
 showregistered:
-	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -dump
+	${LSREGISTERPATH}lsregister -dump
 
 rebuilddatabase:
-	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -v -kill -r -domain local -domain system -domain user "/Library/Spotlight"
+	${LSREGISTERPATH}lsregister -v -kill -r -domain local -domain system -domain user "/Library/Spotlight"
 
